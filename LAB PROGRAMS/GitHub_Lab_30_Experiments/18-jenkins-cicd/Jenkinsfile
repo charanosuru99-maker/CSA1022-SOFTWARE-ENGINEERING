@@ -1,0 +1,8 @@
+pipeline {
+  agent any
+  stages {
+    stage('Checkout') { steps { checkout scm } }
+    stage('Build') { steps { sh 'docker build -t lab-app:$BUILD_NUMBER .' } }
+    stage('Test') { steps { sh 'python -m compileall .' } }
+  }
+}
